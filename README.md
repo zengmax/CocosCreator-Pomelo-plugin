@@ -1,5 +1,5 @@
 # CocosCreator-Pomelo-plugin
-Cocos Creator客户端Pomelo插件
+Cocos Creator客户端Pomelo插件,Cocos Creator 1.5已经测试可用。
 
 # 使用方法
 将pomelo-creator-client.js文件导入Cocos Creator的工程目录中，并且在属性检查器中设置为导入为插件
