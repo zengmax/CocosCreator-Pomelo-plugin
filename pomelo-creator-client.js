@@ -520,7 +520,7 @@
   if(typeof(window) != "undefined") {
     window.Protocol = Protocol;
   }
-})(typeof(window)=="undefined" ? module.exports : (this.Protocol = {}),typeof(window)=="undefined"  ? Buffer : Uint8Array, this);
+})(typeof(window)=="undefined" ? module.exports : ({}),typeof(window)=="undefined"  ? Buffer : Uint8Array, this);
 
 /* ProtocolBuffer client 0.1.0*/
 
@@ -558,7 +558,7 @@
     window.protobuf = Protobuf;
   }
   
-})(typeof(window) == "undefined" ? module.exports : (this.protobuf = {}), this);
+})(typeof(window) == "undefined" ? module.exports : ({}), this);
 
 /**
  * constants
