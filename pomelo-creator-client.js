@@ -1157,6 +1157,7 @@
   var Message = Protocol.Message;
   var EventEmitter = window.EventEmitter;
   var rsa = window.rsa;
+  var disconnectCb = null;
 
   if(typeof(window) != "undefined" && typeof(sys) != 'undefined' && sys.localStorage) {
     window.localStorage = sys.localStorage;
@@ -1342,6 +1343,9 @@
         }, reconnectionDelay);
         reconnectionDelay *= 2;
       }
+      socket = null;
+      disconnectCb && disconnectCb();
+      disconnectCb = null;
     };
     socket = new WebSocket(url);
     socket.binaryType = 'arraybuffer';
@@ -1351,7 +1355,8 @@
     socket.onclose = onclose;
   };
 
-  pomelo.disconnect = function() {
+  pomelo.disconnect = function(cb) {
+    disconnectCb = cb;
     if(socket) {
       if(socket.disconnect) socket.disconnect();
       if(socket.close) socket.close();
@@ -1417,7 +1422,9 @@
   };
 
   var send = function(packet) {
-    socket.send(packet.buffer);
+    if (socket !== null) {
+        socket.send(packet.buffer);
+    }
   };
 
   var handler = {};
