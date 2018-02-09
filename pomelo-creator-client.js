@@ -1144,7 +1144,7 @@
 
 })('undefined' !== typeof protobuf ? protobuf : module.exports, this);
 
-(function() {
+cc.Pomelo = function() {
   var JS_WS_CLIENT_TYPE = 'js-websocket';
   var JS_WS_CLIENT_VERSION = '0.0.1';
 
@@ -1177,7 +1177,7 @@
 
   var root = window;
   var pomelo = Object.create(EventEmitter.prototype); // object extend from object
-  root.pomelo = pomelo;
+  // root.pomelo = pomelo;
   var socket = null;
   var reqId = 0;
   var callbacks = {};
@@ -1614,9 +1614,10 @@
         }
       }
     };
-
+    return pomelo;
     // module.exports = pomelo;
-  })();
+  };
+ window.pomelo=new cc.Pomelo();
 
 
 
